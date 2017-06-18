@@ -1,7 +1,6 @@
 package advent
 
 import org.junit.Assert.assertEquals
-import org.junit.ComparisonFailure
 import java.lang.reflect.InvocationTargetException
 import kotlin.reflect.full.declaredFunctions
 
@@ -9,8 +8,8 @@ abstract class Puzzle {
 
     infix fun <T> T.produces(t: T) = assertEquals(t, this)
 
-    open fun part1(): Any = TODO("Part 1")
-    open fun part2(): Any = TODO("Part 2")
+    open fun part1(): Any = "NOT IMPLEMENTED"
+    open fun part2(): Any = "NOT IMPLEMENTED"
 
     private val RED = "31"
     private val GRN = "32"
@@ -40,8 +39,8 @@ abstract class Puzzle {
                         true
                     } catch (e: Throwable) {
                         println(test + " FAILED\n".color(RED))
-                        if (e is InvocationTargetException && e.targetException is ComparisonFailure)
-                            println(e.targetException.message.color(RED))
+                        if (e is InvocationTargetException)
+                            e.targetException.printStackTrace(System.out)
                         else
                             e.printStackTrace()
                         false
